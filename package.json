@@ -1,0 +1,16 @@
+{
+  "name": "playwright-examples",
+  "version": "1.0.0",
+  "description": "This repo is used to demonstrate various testing scenarios with [Playwright](https://playwright.dev/) 🎭, using the official test-runner and scripts authored in TypeScript.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.35.1"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.7.3"
+  }
+}
