@@ -1,10 +1,18 @@
 # 🎭 Playwright Examples
 
-This repo is used to demonstrate various testing scenarios with [Playwright](https://playwright.dev/) 🎭, using the official test-runner and scripts authored in TypeScript.
+This repo is used to demonstrate various testing scenarios with [Playwright](https://playwright.dev/) 🎭 with Node.js.
 
 ## Run Playwright example tests
 
-Use the VS Code Extension to run the tests in the tests folder or run the following command in the terminal:
+### Install dependencies
+
+Start by cloning the repo and installing the dependencies:
+
+```bash
+npm install
+```
+
+Use the [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) to run the tests in the tests folder from VS Code or run the following command in the terminal:
 
 ```bash
 npx playwright test --ui
