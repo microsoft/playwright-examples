@@ -51,6 +51,9 @@ test.describe('Mocking with HAR files', () => {
 
     // Go to the page
     await page.goto('https://demo.playwright.dev/api-mocking');
+
+    // Assert that the Playwright fruit is visible
+    await expect(page.getByText('Strawberry')).toBeVisible();
   });
 
   test('gets the json from HAR and checks the new fruit has been added', async ({ page }) => {
