@@ -2,7 +2,6 @@ import { test, expect, type Page } from '@playwright/test';
 
 test.describe('Mocking an API call', () => {
 
-
   test("mocks a fruit and doesn't call api", async ({ page }) => {
     // Mock the api call before navigating
     await page.route('*/**/api/v1/fruits', async (route) => {
