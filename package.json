@@ -1,0 +1,9 @@
+{
+  "name": "playwright-examples",
+  "version": "0.0.1",
+  "description": "This repo is used to demonstrate various testing scenarios with [Playwright](https://playwright.dev/) 🎭 with node.js",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@playwright/test": "^1.35.1"
+  }
+}

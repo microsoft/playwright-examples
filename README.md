@@ -1,14 +1,22 @@
-# Project
+# 🎭 Playwright Examples
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repo is used to demonstrate various testing scenarios with [Playwright](https://playwright.dev/) 🎭 with Node.js.
 
-As the maintainer of this project, please make a few updates:
+## Run Playwright example tests
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+### Install dependencies
+
+Start by cloning the repo and installing the dependencies:
+
+```bash
+npm install
+```
+
+Use the [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) to run the tests in the tests folder from VS Code or run the following command in the terminal:
+
+```bash
+npx playwright test --ui
+```
 
 ## Contributing
 
