@@ -44,7 +44,7 @@ test.describe('Mocking with HAR files', () => {
 
   test('records or updates the HAR file', async ({ page }) => {
     // Get the response from the HAR file
-    await page.routeFromHAR('./hars/fruit.har', {
+    await page.routeFromHAR('./hars/fruits.har', {
       url: '*/**/api/v1/fruits',
       update: true,
     });
@@ -60,7 +60,7 @@ test.describe('Mocking with HAR files', () => {
     // Replay API requests from HAR.
     // Either use a matching response from the HAR,
     // or abort the request if nothing matches.
-    await page.routeFromHAR('./hars/fruit.har', {
+    await page.routeFromHAR('./hars/fruits.har', {
       url: '*/**/api/v1/fruits',
       update: false,
     });
