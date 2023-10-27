@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 
 // run these tests to see how error messages are displayed hiding implementation details of the boxed step. 
-// lines 20 and 38 have been commented out to show a failing test
+// comment out line 20 and run the second test to see how box steps work
 
 async function addAndViewCart(page: Page){
   await test.step('add to cart', async () => {
@@ -27,7 +27,7 @@ test.describe('add to cart scenarios', () => {
     await placeholder.click();
     await placeholder.fill('xbox');
     await placeholder.press('Enter');
-    // await page.getByRole('img', { name: product }).click();
+    await page.getByRole('img', { name: product }).click();
     await addAndViewCart(page);
     await expect(page.getByText(product)).toBeVisible();
   });
@@ -35,7 +35,7 @@ test.describe('add to cart scenarios', () => {
   test('add to cart from all products page', async ({ page }) => {
     const product = 'Xbox Wireless Controller Lunar Shift Special Edition'
     await page.getByRole('link', { name: 'All Products' }).first().click();
-    // await page.getByRole('img', { name: product }).click();
+    await page.getByRole('img', { name: product }).click();
     await addAndViewCart(page);
     await expect(page.getByText(product)).toBeVisible();
   });
