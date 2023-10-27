@@ -1,13 +1,15 @@
 import { test, expect, Page } from '@playwright/test';
 
-// run these tests to see how error messages are displayed hiding implementation details of the boxed step. 
+// various test scenarios for adding items to the cart
 // comment out line 20 and run the second test to see how box steps work
 
+// reusable function to add an item to the cart and view the cart
+// we wrap our actions in a test step and set box to true
 async function addAndViewCart(page: Page){
-  await test.step('add to cart', async () => {
+  await test.step('add and view cart', async () => {
     await page.getByRole('button', { name: 'Add To Bag' }).click();
     await page.getByLabel('cart').click();
-  }, { box: true });
+  }, { box: true }); // box: true will hide the implementation details of the step
 }
 
 test.describe('add to cart scenarios', () => {
@@ -47,5 +49,4 @@ test.describe('add to cart scenarios', () => {
     await addAndViewCart(page);
     await expect(page.getByText(product)).toBeVisible();
   });
-
 });
