@@ -1,11 +1,12 @@
 import { test, expect, Page } from '@playwright/test';
 
 // run these tests to see how error messages are displayed hiding implementation details of the boxed step. 
-// lines 29 and 39 have been commented out to show a failing test
+// lines 20 and 38 have been commented out to show a failing test
 
-async function addToCart(page: Page){
+async function addAndViewCart(page: Page){
   await test.step('add to cart', async () => {
     await page.getByRole('button', { name: 'Add To Bag' }).click();
+    await page.getByLabel('cart').click();
   }, { box: true });
 }
 
@@ -16,8 +17,7 @@ test.describe('add to cart scenarios', () => {
 
   test('add to cart from carousel', async ({ page }) => {
     await page.getByRole('button', { name: 'Buy Now' }).click();
-    await addToCart(page);
-    await page.getByLabel('cart').click();
+    await addAndViewCart(page);
     await expect(page.getByText('Xbox Wireless Controller Lunar Shift Special Edition')).toBeVisible();
   });
 
@@ -28,8 +28,7 @@ test.describe('add to cart scenarios', () => {
     await placeholder.fill('xbox');
     await placeholder.press('Enter');
     // await page.getByRole('img', { name: product }).click();
-    await addToCart(page);
-    await page.getByLabel('cart').click();
+    await addAndViewCart(page);
     await expect(page.getByText(product)).toBeVisible();
   });
 
@@ -37,8 +36,7 @@ test.describe('add to cart scenarios', () => {
     const product = 'Xbox Wireless Controller Lunar Shift Special Edition'
     await page.getByRole('link', { name: 'All Products' }).first().click();
     // await page.getByRole('img', { name: product }).click();
-    await addToCart(page);
-    await page.getByLabel('cart').click();
+    await addAndViewCart(page);
     await expect(page.getByText(product)).toBeVisible();
   });
 
@@ -46,8 +44,7 @@ test.describe('add to cart scenarios', () => {
     const product = 'Microsoft Surface Pro X 1876 13 Inches Laptop'
     await page.getByRole('link', { name: 'Laptops' }).first().click();
     await page.getByRole('img', { name:  product}).click();
-    await addToCart(page);
-    await page.getByLabel('cart').click();
+    await addAndViewCart(page);
     await expect(page.getByText(product)).toBeVisible();
   });
 
