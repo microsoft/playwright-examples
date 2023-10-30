@@ -1,7 +1,8 @@
 import { test, expect, Page } from '@playwright/test';
 
 // various test scenarios for adding items to the cart
-// comment out line 20 and run the second test to see how box steps work
+// comment out the line before the `addAndViewCart` function in one of the tests 
+// Then run the test to see how box steps hide the implementation details of the step
 
 // reusable function to add an item to the cart and view the cart
 // we wrap our actions in a test step and set box to true
