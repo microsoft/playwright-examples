@@ -6,7 +6,7 @@ languages:
 - typescript
 - javascript
 products:
-- playwright-testing
+- playwright
 urlFragment: boxed-steps
 ---
 
