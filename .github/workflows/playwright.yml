@@ -1,27 +1,77 @@
-name: Playwright Tests
+# Simple workflow for running tests and deploying static html test reports to GitHub Pages
+# Reference: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
+name: Test and Publish results to GitHub Pages
+
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches: [ main ]
+    branches: ["main"]
+  
+  # Runs on pull requests to the default branch. actions/deploy-pages step would be skipped for PRs.
   pull_request:
     branches: [ main ]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 18
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+  
+      - name: Install project dependencies
+        run: npm ci
+  
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+  
+      - name: Run Playwright tests
+        run: npx playwright test
+      
+      - name: Setup and Enable Pages
+        if: always()
+        uses: actions/configure-pages@v4
+        
+      - name: Upload artifact playwright-report
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'playwright-report'
+  
+  # Publish test results job
+  publish-results:
+    # Add a dependency to the test job
+    needs: test
+    if: always()
+    
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
