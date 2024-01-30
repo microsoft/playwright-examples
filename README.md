@@ -27,7 +27,6 @@ Test report URL for the latest run in CI is available in the run itself and here
 > - For the above report to be available, as a one time measure, a project admin or maintainer has to manually enable `Pages` settings to use `GithHub Actions` as a source for `Build and Deployment`. 
 > - The detailed steps are mentioned in github official docs [here: Required steps are from step 1 till 4. Step 5 is to be skipped, since we already have workflow in our repository](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow). 
 
-
 ## 🫱🏻‍🫲🏾 Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
