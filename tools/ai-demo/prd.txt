@@ -1,0 +1,7 @@
+Feature: Login validation
+
+Requirements:
+1. User must enter email
+2. Password must be at least 8 characters
+3. Show error message if password is too short
+4. Login button should not submit if validation fails
