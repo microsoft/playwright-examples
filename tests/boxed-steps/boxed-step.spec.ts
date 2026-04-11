@@ -15,7 +15,8 @@ async function addAndViewCart(page: Page){
 
 test.describe('add to cart scenarios', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://cloudtesting.contosotraders.com/')
+    // TODO: Replace with a working test environment (original URL is no longer available)
+await page.goto('https://example.com')
   });
 
   test('add to cart from carousel', async ({ page }) => {
