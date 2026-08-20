@@ -1,9 +1,24 @@
 {
-  "name": "playwright-examples",
-  "version": "0.0.1",
-  "description": "This repo is used to demonstrate various testing scenarios with [Playwright](https://playwright.dev/) 🎭 with node.js",
-  "license": "Apache-2.0",
+  "name": "playwright-web-automation-framework",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio-grade UI and API automation framework built with Playwright and TypeScript.",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:api": "playwright test tests/api",
+    "test:reelly": "playwright test tests/ui/reelly-authentication.spec.ts --project=chromium",
+    "test:chromium": "playwright test --project=chromium",
+    "typecheck": "tsc --noEmit",
+    "report": "playwright show-report"
+  },
+  "keywords": ["playwright", "typescript", "test-automation", "qa", "e2e-testing", "api-testing"],
+  "author": "Denys Ishchuk",
+  "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.45.0"
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^22.20.1",
+    "typescript": "^7.0.2"
   }
 }
